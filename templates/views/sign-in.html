@@ -1,0 +1,38 @@
+{{ define "head" }}
+	<style>
+		html, body {
+			height: 100%;
+		}
+
+		body {
+			display: flex;
+			align-items: center;
+			padding-top: 40px;
+			padding-bottom: 40px;
+		}
+
+		#sign-in-form {
+			max-width: 330px;
+		}
+	</style>
+{{ end }}
+
+{{ define "main" }}
+	<div id="sign-in-form" class="w-100 p-1 m-auto">
+		<form action="/sign-in" method="post">
+			<h1 class="text-center h3 mb-3 font-weight-normal">Connexion</h1>
+
+			<div class="mb-3">
+				<label for="username-input" class="form-label">Identifiant</label>
+				<input type="username" id="username-input" name="username" class="form-control form-control-lg" placeholder="Identifiant" required autofocus>
+			</div>
+
+			<div class="mb-3">
+				<label for="password-input" class="form-label">Mot de passe</label>
+				<input type="password" id="password-input" name="password" class="form-control form-control-lg" placeholder="Mot de passe" required>
+			</div>
+
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Envoyer</button>
+		</form>
+	</div>
+{{ end }}
