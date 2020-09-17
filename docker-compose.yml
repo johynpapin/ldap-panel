@@ -15,5 +15,3 @@ services:
     image: johynpain/ldap-panel-app:latest
     ports:
       - "4243:80"
-    environment:
-      VUE_APP_API_BASE_URL: https://api.example.com
