@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	jwt "github.com/appleboy/gin-jwt/v2"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/go-ldap/ldap/v3"
 	"log"
@@ -91,6 +92,11 @@ func main() {
 	// Routes
 
 	router := gin.Default()
+
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowAllOrigins = true
+	corsConfig.AllowHeaders = append(corsConfig.AllowHeaders, "Authorization")
+	router.Use(cors.New(corsConfig))
 
 	router.POST("/auth/sign-in", authMiddleware.LoginHandler)
 	router.GET("/auth/refresh", authMiddleware.MiddlewareFunc(), authMiddleware.RefreshHandler)
