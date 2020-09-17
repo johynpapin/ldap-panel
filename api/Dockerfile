@@ -23,4 +23,5 @@ FROM scratch
 
 COPY --from=builder /dist/main /
 
+ENV PORT=80
 ENTRYPOINT ["/main"]

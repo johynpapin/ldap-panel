@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  api:
+    image: johynpapin/ldap-panel-api:latest
+    ports:
+      - "4242:80"
+    environment:
+      LDAP_PANEL_SECRET_KEY: "a very secret secret"
+      LDAP_PANEL_LDAP_BASE_DN: "ou=Users,dc=example,dc=com"
+      LDAP_PANEL_LDAP_URL: "ldaps://ldap.example.com"
+      LDAP_PANEL_LDAP_USERNAME: "cn=admin,dc=example,dc=com"
+      LDAP_PANEL_LDAP_PASSWORD: "AVerySecurePassword"
+  
+  app:
+    image: johynpain/ldap-panel-app:latest
+    ports:
+      - "4243:80"
+    environment:
+      VUE_APP_API_BASE_URL: https://api.example.com
